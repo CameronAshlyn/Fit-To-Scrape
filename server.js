@@ -13,7 +13,7 @@ var cheerio = require("cheerio");
 var db = require("./models");
 
 // Est. the port
-var PORT = 3001;
+var PORT = process.env.PORT || 3030;
 
 // Initialize Express
 var app = express();
@@ -28,10 +28,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // MAKE DA CONNECTION!!!!! to the Mongo DB
-mongoose.connect("mongodb://localhost/nbcscraper"); //// not sure what needs to go here????
+// mongoose.connect("mongodb://localhost/nbcscraper"); //// not sure what needs to go here????
 
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://<dbuser>:<dbpassword>@ds229552.mlab.com:29552/heroku_0fktvhpv";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/nbcscraper";
 
 // Set mongoose to leverage built in JavaScript ES6 Promises
 // Connect to the Mongo DB
